@@ -9,7 +9,7 @@
         content="width=device-width, initial-scale=1.0"
     >
 
-    <title>Guitar Tuner</title>
+    <title>Гитарный тюнер</title>
 
     <link
         rel="stylesheet"
@@ -83,26 +83,10 @@
         </div>
 
 
-        <!-- Девушка -->
-        <div class="character">
-
-            <img
-                src="girl.png"
-                alt="Alt girl with electric guitar"
-                class="girl"
-            >
-
-        </div>
-
-
-        <!-- Интерфейс тюнера -->
+        <!-- Основной интерфейс -->
         <section class="tuner">
 
-            <h1>🎸 GUITAR TUNER</h1>
-
-            <p class="subtitle">
-                STANDARD TUNING
-            </p>
+            <h1>🎸 ГИТАРНЫЙ ТЮНЕР</h1>
 
 
             <!-- Выбор струны -->
@@ -110,51 +94,69 @@
 
                 <button
                     class="string-button"
-                    data-note="E2"
+                    data-note="E4"
                 >
-                    E
-                    <small>82.4 Hz</small>
-                </button>
-
-                <button
-                    class="string-button"
-                    data-note="A2"
-                >
-                    A
-                    <small>110 Hz</small>
-                </button>
-
-                <button
-                    class="string-button"
-                    data-note="D3"
-                >
-                    D
-                    <small>146.8 Hz</small>
-                </button>
-
-                <button
-                    class="string-button"
-                    data-note="G3"
-                >
-                    G
-                    <small>196 Hz</small>
+                    <strong>1-я</strong>
+                    <span>E</span>
+                    <small>329,6 Гц</small>
                 </button>
 
                 <button
                     class="string-button"
                     data-note="B3"
                 >
-                    B
-                    <small>246.9 Hz</small>
+                    <strong>2-я</strong>
+                    <span>B</span>
+                    <small>246,9 Гц</small>
                 </button>
 
                 <button
                     class="string-button"
-                    data-note="E4"
+                    data-note="G3"
                 >
-                    E
-                    <small>329.6 Hz</small>
+                    <strong>3-я</strong>
+                    <span>G</span>
+                    <small>196 Гц</small>
                 </button>
+
+                <button
+                    class="string-button"
+                    data-note="D3"
+                >
+                    <strong>4-я</strong>
+                    <span>D</span>
+                    <small>146,8 Гц</small>
+                </button>
+
+                <button
+                    class="string-button"
+                    data-note="A2"
+                >
+                    <strong>5-я</strong>
+                    <span>A</span>
+                    <small>110 Гц</small>
+                </button>
+
+                <button
+                    class="string-button"
+                    data-note="E2"
+                >
+                    <strong>6-я</strong>
+                    <span>E</span>
+                    <small>82,4 Гц</small>
+                </button>
+
+            </div>
+
+
+            <!-- Девушка -->
+            <div class="character">
+
+                <img
+                    src="girl.png"
+                    alt="Девушка с электрогитарой"
+                    class="girl"
+                >
 
             </div>
 
@@ -166,7 +168,7 @@
                     id="selected-note"
                     class="selected-note"
                 >
-                    —
+                    Выбери струну
                 </div>
 
                 <div
@@ -180,10 +182,11 @@
                     id="frequency"
                     class="frequency"
                 >
-                    — Hz
+                    — Гц
                 </div>
 
 
+                <!-- Шкала -->
                 <div class="meter">
 
                     <div class="meter-center"></div>
@@ -211,7 +214,7 @@
                 id="mic-button"
                 class="mic-button"
             >
-                🎤 НАСТРОИТЬ
+                🎤 НАСТРОИТЬ ГИТАРУ
             </button>
 
 
