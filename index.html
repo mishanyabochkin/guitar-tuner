@@ -1,0 +1,153 @@
+<!DOCTYPE html>
+<html lang="ru">
+
+<head>
+    <meta charset="UTF-8">
+
+    <meta
+        name="viewport"
+        content="width=device-width, initial-scale=1.0"
+    >
+
+    <title>Гитарный тюнер</title>
+
+    <link
+        rel="stylesheet"
+        href="style.css"
+    >
+    <link
+    rel="manifest"
+    href="manifest.json"
+>
+</head>
+
+<body>
+
+    <div class="tuner">
+
+        <h1>🎸 Гитарный тюнер</h1>
+
+        <p class="choose-title">
+            Выбери струну
+        </p>
+
+        <div class="strings">
+
+            <button class="string-button" data-note="E2">
+                <span>6</span>
+                <strong>E</strong>
+                <small>82.41 Hz</small>
+            </button>
+
+            <button class="string-button" data-note="A2">
+                <span>5</span>
+                <strong>A</strong>
+                <small>110.00 Hz</small>
+            </button>
+
+            <button class="string-button" data-note="D3">
+                <span>4</span>
+                <strong>D</strong>
+                <small>146.83 Hz</small>
+            </button>
+
+            <button class="string-button" data-note="G3">
+                <span>3</span>
+                <strong>G</strong>
+                <small>196.00 Hz</small>
+            </button>
+
+            <button class="string-button" data-note="B3">
+                <span>2</span>
+                <strong>B</strong>
+                <small>246.94 Hz</small>
+            </button>
+
+            <button class="string-button" data-note="E4">
+                <span>1</span>
+                <strong>E</strong>
+                <small>329.63 Hz</small>
+            </button>
+
+        </div>
+
+
+        <div class="selected-string">
+
+            Струна:
+
+            <strong id="selected-note">
+                —
+            </strong>
+
+        </div>
+
+
+        <button id="mic-button">
+            🎤 Включить микрофон
+        </button>
+
+
+        <div class="note" id="note">
+            —
+        </div>
+
+
+        <div class="frequency" id="frequency">
+            0.0 Hz
+        </div>
+
+
+        <div class="labels">
+
+            <span>
+                🔵 НАТЯНИ
+            </span>
+
+            <span>
+                ОСЛАБЬ 🔴
+            </span>
+
+        </div>
+
+
+        <div class="scale">
+
+            <div class="center-line"></div>
+
+            <div
+                class="marker"
+                id="marker"
+            ></div>
+
+        </div>
+
+
+        <div
+            class="tuning-status"
+            id="tuning-status"
+        >
+            Сначала выбери струну
+        </div>
+
+
+        <p id="status">
+            Микрофон выключен
+        </p>
+
+    </div>
+
+
+    <script src="script.js"></script>
+
+    <script>
+    if ("serviceWorker" in navigator) {
+        navigator.serviceWorker.register(
+            "service-worker.js"
+        );
+    }
+</script>
+
+</body>
+
+</html>
