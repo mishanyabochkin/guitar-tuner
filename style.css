@@ -1,231 +1,974 @@
+* {
+    box-sizing: border-box;
+}
+
+html,
 body {
     margin: 0;
+    padding: 0;
+    width: 100%;
+    height: 100%;
+}
 
-    background: #111;
-
-    color: white;
-
+body {
+    overflow: hidden;
     font-family: Arial, sans-serif;
-
-    display: flex;
-
-    justify-content: center;
-
-    align-items: center;
-
-    min-height: 100vh;
+    background: #09051a;
+    color: white;
 }
 
 
-.tuner {
-    width: 92%;
+/* =====================================================
+   ОСНОВНОЙ ЭКРАН
+===================================================== */
 
-    max-width: 650px;
+.game {
+    position: relative;
+
+    width: 100%;
+    min-height: 100vh;
+
+    overflow: hidden;
+
+    background:
+        linear-gradient(
+            to bottom,
+            #09051a 0%,
+            #130b2f 45%,
+            #24124b 75%,
+            #080612 100%
+        );
+}
+
+
+/* =====================================================
+   НЕБО
+===================================================== */
+
+.sky {
+    position: absolute;
+
+    inset: 0;
+
+    z-index: 1;
+
+    pointer-events: none;
+}
+
+
+/* =====================================================
+   ЗВЁЗДЫ
+===================================================== */
+
+.stars {
+    position: absolute;
+
+    inset: 0;
+}
+
+.star {
+    position: absolute;
+
+    width: 3px;
+    height: 3px;
+
+    background: white;
+
+    box-shadow:
+        0 0 5px rgba(255,255,255,0.8);
+
+    image-rendering: pixelated;
+
+    animation:
+        twinkle 3s infinite alternate;
+}
+
+.s1 {
+    left: 7%;
+    top: 13%;
+}
+
+.s2 {
+    left: 16%;
+    top: 25%;
+    width: 2px;
+    height: 2px;
+}
+
+.s3 {
+    left: 27%;
+    top: 9%;
+}
+
+.s4 {
+    left: 39%;
+    top: 20%;
+    width: 2px;
+    height: 2px;
+}
+
+.s5 {
+    left: 52%;
+    top: 8%;
+}
+
+.s6 {
+    left: 63%;
+    top: 27%;
+    width: 2px;
+    height: 2px;
+}
+
+.s7 {
+    left: 74%;
+    top: 12%;
+}
+
+.s8 {
+    left: 84%;
+    top: 23%;
+    width: 2px;
+    height: 2px;
+}
+
+.s9 {
+    left: 91%;
+    top: 8%;
+}
+
+.s10 {
+    left: 48%;
+    top: 34%;
+    width: 2px;
+    height: 2px;
+}
+
+.s11 {
+    left: 20%;
+    top: 38%;
+}
+
+.s12 {
+    left: 79%;
+    top: 36%;
+    width: 2px;
+    height: 2px;
+}
+
+@keyframes twinkle {
+
+    from {
+        opacity: 0.35;
+    }
+
+    to {
+        opacity: 1;
+    }
+
+}
+
+
+/* =====================================================
+   ЛУНА
+===================================================== */
+
+.moon {
+    position: absolute;
+
+    right: 10%;
+    top: 8%;
+
+    width: 80px;
+    height: 80px;
+
+    border-radius: 50%;
+
+    background:
+        radial-gradient(
+            circle at 35% 30%,
+            #fffce8,
+            #dcd8bd 65%,
+            #aaa58c 100%
+        );
+
+    box-shadow:
+        0 0 30px rgba(255,255,220,0.25);
+}
+
+.crater {
+    position: absolute;
+
+    border-radius: 50%;
+
+    background: rgba(100, 95, 80, 0.18);
+}
+
+.c1 {
+    width: 18px;
+    height: 18px;
+
+    left: 16px;
+    top: 19px;
+}
+
+.c2 {
+    width: 12px;
+    height: 12px;
+
+    right: 15px;
+    top: 28px;
+}
+
+.c3 {
+    width: 9px;
+    height: 9px;
+
+    left: 39px;
+    bottom: 14px;
+}
+
+
+/* =====================================================
+   ОБЛАКА
+===================================================== */
+
+.cloud {
+    position: absolute;
+
+    width: 150px;
+    height: 25px;
+
+    background: rgba(90, 70, 130, 0.16);
+
+    border-radius: 50px;
+}
+
+.cloud::before,
+.cloud::after {
+    content: "";
+
+    position: absolute;
+
+    background: inherit;
+
+    border-radius: 50%;
+}
+
+.cloud::before {
+    width: 55px;
+    height: 55px;
+
+    left: 25px;
+    bottom: 0;
+}
+
+.cloud::after {
+    width: 75px;
+    height: 75px;
+
+    left: 70px;
+    bottom: 0;
+}
+
+.cloud1 {
+    left: 5%;
+    top: 30%;
+}
+
+.cloud2 {
+    right: 5%;
+    top: 42%;
+    transform: scale(0.8);
+}
+
+
+/* =====================================================
+   ГОРОД
+===================================================== */
+
+.city {
+    position: absolute;
+
+    left: 0;
+    bottom: 0;
+
+    width: 100%;
+
+    display: flex;
+
+    align-items: flex-end;
+
+    pointer-events: none;
+}
+
+
+/* Дальний город */
+
+.far-city {
+    height: 42%;
+
+    z-index: 3;
+
+    gap: 8px;
+
+    opacity: 0.55;
+}
+
+.far-city .building {
+    position: relative;
+
+    flex: 1;
+
+    min-width: 30px;
+
+    background: #11102c;
+}
+
+
+/* Разная высота */
+
+.b1 {
+    height: 55%;
+}
+
+.b2 {
+    height: 80%;
+}
+
+.b3 {
+    height: 62%;
+}
+
+.b4 {
+    height: 92%;
+}
+
+.b5 {
+    height: 70%;
+}
+
+.b6 {
+    height: 48%;
+}
+
+.b7 {
+    height: 84%;
+}
+
+.b8 {
+    height: 64%;
+}
+
+.b9 {
+    height: 76%;
+}
+
+.b10 {
+    height: 58%;
+}
+
+
+/* Передний город */
+
+.front-city {
+    height: 30%;
+
+    z-index: 8;
+
+    gap: 5px;
+
+    opacity: 0.9;
+}
+
+.front-city .building {
+    position: relative;
+
+    flex: 1;
+
+    min-width: 35px;
+
+    background: #090817;
+}
+
+.fb1 {
+    height: 70%;
+}
+
+.fb2 {
+    height: 90%;
+}
+
+.fb3 {
+    height: 58%;
+}
+
+.fb4 {
+    height: 82%;
+}
+
+.fb5 {
+    height: 65%;
+}
+
+.fb6 {
+    height: 95%;
+}
+
+.fb7 {
+    height: 72%;
+}
+
+.fb8 {
+    height: 86%;
+}
+
+
+/* =====================================================
+   ОКНА ГОРОДА
+===================================================== */
+
+.far-city .building::after,
+.front-city .building::after {
+    content: "";
+
+    position: absolute;
+
+    inset: 12px 8px;
+
+    background:
+        repeating-linear-gradient(
+            to bottom,
+            rgba(255, 180, 70, 0.55) 0,
+            rgba(255, 180, 70, 0.55) 4px,
+            transparent 4px,
+            transparent 14px
+        );
+
+    opacity: 0.45;
+}
+
+
+/* =====================================================
+   ПАНЕЛЬ ТЮНЕРА
+===================================================== */
+
+.tuner {
+    position: relative;
+
+    z-index: 20;
+
+    width: min(900px, 94vw);
+
+    margin: 0 auto;
+
+    padding-top: 25px;
 
     text-align: center;
 }
 
 
+/* =====================================================
+   ЗАГОЛОВОК
+===================================================== */
+
 h1 {
-    margin-bottom: 15px;
+    margin: 0;
+
+    font-size: clamp(28px, 5vw, 52px);
+
+    letter-spacing: 4px;
+
+    text-shadow:
+        0 0 10px rgba(180, 80, 255, 0.8),
+        0 0 25px rgba(100, 50, 255, 0.5);
+}
+
+.subtitle {
+    margin: 8px 0 18px;
+
+    font-size: 12px;
+
+    letter-spacing: 4px;
+
+    opacity: 0.65;
 }
 
 
-.choose-title {
-    color: #aaa;
-
-    margin-bottom: 15px;
-}
-
+/* =====================================================
+   СТРУНЫ
+===================================================== */
 
 .strings {
-    display: grid;
+    display: flex;
 
-    grid-template-columns:
-        repeat(6, 1fr);
+    justify-content: center;
 
-    gap: 8px;
+    gap: 10px;
 
-    margin-bottom: 25px;
+    width: 100%;
+
+    position: relative;
+
+    z-index: 30;
 }
 
-
 .string-button {
-    padding: 10px 4px;
+    width: 80px;
+    height: 62px;
 
-    border: 2px solid #444;
+    border: 2px solid rgba(255,255,255,0.3);
 
-    border-radius: 10px;
-
-    background: #222;
+    background:
+        linear-gradient(
+            145deg,
+            rgba(60, 35, 100, 0.9),
+            rgba(20, 12, 45, 0.95)
+        );
 
     color: white;
 
     cursor: pointer;
 
-    display: flex;
-
-    flex-direction: column;
-
-    align-items: center;
-
-    gap: 3px;
-}
-
-
-.string-button:hover {
-    background: #333;
-}
-
-
-.string-button.active {
-    border-color: #00ff66;
-
-    background: #183522;
-}
-
-
-.string-button span {
-    font-size: 12px;
-
-    color: #888;
-}
-
-
-.string-button strong {
     font-size: 25px;
-}
+    font-weight: bold;
 
+    border-radius: 8px;
+
+    transition:
+        transform 0.15s,
+        border-color 0.15s,
+        box-shadow 0.15s,
+        background 0.15s;
+}
 
 .string-button small {
-    font-size: 10px;
+    display: block;
 
-    color: #888;
+    margin-top: 4px;
+
+    font-size: 9px;
+
+    font-weight: normal;
+
+    opacity: 0.65;
+}
+
+.string-button:hover {
+    transform: translateY(-3px);
+
+    border-color: #c77dff;
+
+    box-shadow:
+        0 0 15px rgba(190, 80, 255, 0.35);
+}
+
+.string-button.active {
+    transform: translateY(-3px);
+
+    border-color: #ff5fcf;
+
+    background:
+        linear-gradient(
+            145deg,
+            rgba(120, 35, 110, 0.95),
+            rgba(40, 15, 60, 0.98)
+        );
+
+    box-shadow:
+        0 0 20px rgba(255, 70, 210, 0.45);
 }
 
 
-.selected-string {
-    font-size: 20px;
+/* =====================================================
+   ДЕВУШКА
+===================================================== */
 
-    margin-bottom: 20px;
+.character {
+    position: relative;
+
+    z-index: 10;
+
+    width: 100%;
+
+    height: 265px;
+
+    display: flex;
+
+    justify-content: center;
+
+    align-items: flex-end;
+
+    margin-top: 2px;
+
+    margin-bottom: -5px;
+
+    pointer-events: none;
+}
+
+.girl {
+    width: 270px;
+    height: 270px;
+
+    object-fit: contain;
+
+    image-rendering: pixelated;
+    image-rendering: crisp-edges;
+
+    user-select: none;
+
+    filter:
+        drop-shadow(
+            0 0 12px
+            rgba(170, 70, 255, 0.35)
+        );
+
+    animation:
+        characterFloat 3s ease-in-out infinite;
+}
+
+@keyframes characterFloat {
+
+    0% {
+        transform: translateY(0);
+    }
+
+    50% {
+        transform: translateY(-4px);
+    }
+
+    100% {
+        transform: translateY(0);
+    }
+
 }
 
 
-#selected-note {
-    color: #00ff66;
+/* =====================================================
+   ДИСПЛЕЙ
+===================================================== */
 
-    font-size: 28px;
+.display {
+    position: relative;
+
+    z-index: 30;
+
+    width: 100%;
+
+    padding: 20px 25px;
+
+    border: 2px solid rgba(190, 120, 255, 0.35);
+
+    border-radius: 14px;
+
+    background:
+        rgba(8, 5, 22, 0.88);
+
+    box-shadow:
+        0 0 25px rgba(100, 40, 180, 0.18);
+
+    backdrop-filter: blur(4px);
 }
 
 
-#mic-button {
-    padding: 14px 25px;
+/* Выбранная струна */
 
-    font-size: 17px;
+.selected-note {
+    font-size: 13px;
 
-    border: none;
+    letter-spacing: 3px;
 
-    border-radius: 10px;
+    opacity: 0.55;
 
-    cursor: pointer;
+    margin-bottom: 3px;
 }
 
+
+/* Большая нота */
 
 .note {
-    font-size: 80px;
+    font-size: 70px;
+
+    line-height: 0.9;
 
     font-weight: bold;
 
-    margin-top: 25px;
+    text-shadow:
+        0 0 15px rgba(255,255,255,0.35);
 }
 
+
+/* Частота */
 
 .frequency {
-    font-size: 24px;
+    margin-top: 7px;
 
-    color: #aaa;
+    font-size: 15px;
 
-    margin-bottom: 35px;
+    opacity: 0.7;
 }
 
 
-.labels {
-    display: flex;
+/* =====================================================
+   ШКАЛА
+===================================================== */
 
-    justify-content: space-between;
-
-    font-size: 14px;
-
-    margin-bottom: 10px;
-
-    color: #aaa;
-}
-
-
-.scale {
+.meter {
     position: relative;
 
     width: 100%;
 
-    height: 80px;
+    height: 12px;
 
-    background: #222;
+    margin-top: 25px;
 
-    border-radius: 20px;
+    border-radius: 10px;
+
+    background:
+        linear-gradient(
+            to right,
+            #3399ff 0%,
+            #3399ff 40%,
+            #555 40%,
+            #555 47%,
+            #00ff66 47%,
+            #00ff66 53%,
+            #555 53%,
+            #555 60%,
+            #ff4444 60%,
+            #ff4444 100%
+        );
+
+    box-shadow:
+        0 0 10px rgba(255,255,255,0.1);
 }
 
 
-.center-line {
+/* Центральная отметка */
+
+.meter-center {
     position: absolute;
 
     left: 50%;
+    top: -7px;
 
-    top: 10px;
-
-    bottom: 10px;
-
-    width: 3px;
+    width: 2px;
+    height: 26px;
 
     background: white;
 
     transform: translateX(-50%);
+
+    box-shadow:
+        0 0 8px white;
 }
 
+
+/* Маркер */
 
 .marker {
     position: absolute;
 
     left: 50%;
+    top: -8px;
 
-    top: 50%;
+    width: 5px;
+    height: 28px;
 
-    width: 30px;
-
-    height: 30px;
-
-    border-radius: 50%;
+    border-radius: 4px;
 
     background: white;
 
-    transform:
-        translate(-50%, -50%);
+    transform: translateX(-50%);
 
     transition:
-        left 0.15s ease-out;
+        left 0.12s ease,
+        background 0.15s ease;
+
+    box-shadow:
+        0 0 10px rgba(255,255,255,0.7);
 }
 
 
+/* Статус настройки */
+
 .tuning-status {
-    font-size: 28px;
+    margin-top: 18px;
+
+    font-size: 18px;
 
     font-weight: bold;
 
-    margin-top: 30px;
+    letter-spacing: 2px;
 }
 
 
-#status {
-    color: #777;
+/* =====================================================
+   КНОПКА МИКРОФОНА
+===================================================== */
 
-    margin-top: 25px;
+.mic-button {
+    position: relative;
+
+    z-index: 30;
+
+    margin-top: 18px;
+
+    padding: 14px 30px;
+
+    border: 2px solid #a85cff;
+
+    border-radius: 8px;
+
+    background:
+        linear-gradient(
+            145deg,
+            #4c176f,
+            #20103a
+        );
+
+    color: white;
+
+    font-size: 15px;
+    font-weight: bold;
+
+    letter-spacing: 2px;
+
+    cursor: pointer;
+
+    box-shadow:
+        0 0 15px rgba(160, 70, 255, 0.25);
+
+    transition:
+        transform 0.15s,
+        box-shadow 0.15s;
+}
+
+.mic-button:hover {
+    transform: translateY(-2px);
+
+    box-shadow:
+        0 0 25px rgba(190, 80, 255, 0.45);
+}
+
+.mic-button:active {
+    transform: translateY(1px);
+}
+
+
+/* =====================================================
+   СТАТУС МИКРОФОНА
+===================================================== */
+
+.status {
+    position: relative;
+
+    z-index: 30;
+
+    margin-top: 10px;
+
+    font-size: 12px;
+
+    opacity: 0.55;
+}
+
+
+/* =====================================================
+   МОБИЛЬНАЯ ВЕРСИЯ
+===================================================== */
+
+@media (max-width: 700px) {
+
+    .tuner {
+        padding-top: 15px;
+    }
+
+    h1 {
+        font-size: 28px;
+
+        letter-spacing: 2px;
+    }
+
+    .subtitle {
+        margin-bottom: 12px;
+    }
+
+    .strings {
+        gap: 5px;
+    }
+
+    .string-button {
+        width: 52px;
+        height: 54px;
+
+        font-size: 20px;
+    }
+
+    .string-button small {
+        font-size: 7px;
+    }
+
+    .character {
+        height: 220px;
+
+        margin-top: 0;
+        margin-bottom: -2px;
+    }
+
+    .girl {
+        width: 220px;
+        height: 220px;
+    }
+
+    .display {
+        padding: 15px;
+    }
+
+    .note {
+        font-size: 55px;
+    }
+
+    .meter {
+        margin-top: 18px;
+    }
+
+    .moon {
+        width: 55px;
+        height: 55px;
+
+        right: 7%;
+        top: 6%;
+    }
+
+}
+
+
+/* =====================================================
+   СОВСЕМ МАЛЕНЬКИЙ ЭКРАН
+===================================================== */
+
+@media (max-height: 750px) {
+
+    .character {
+        height: 190px;
+    }
+
+    .girl {
+        width: 190px;
+        height: 190px;
+    }
+
+    .display {
+        padding: 12px 18px;
+    }
+
+    .note {
+        font-size: 48px;
+    }
+
+    .mic-button {
+        margin-top: 10px;
+
+        padding: 10px 22px;
+    }
+
 }

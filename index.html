@@ -9,144 +9,225 @@
         content="width=device-width, initial-scale=1.0"
     >
 
-    <title>Гитарный тюнер</title>
+    <title>Guitar Tuner</title>
 
     <link
         rel="stylesheet"
         href="style.css"
     >
-    <link
-    rel="manifest"
-    href="manifest.json"
->
 </head>
 
 <body>
 
-    <div class="tuner">
+    <main class="game">
 
-        <h1>🎸 Гитарный тюнер</h1>
+        <!-- Ночное небо -->
+        <div class="sky">
 
-        <p class="choose-title">
-            Выбери струну
-        </p>
+            <div class="stars">
+                <span class="star s1"></span>
+                <span class="star s2"></span>
+                <span class="star s3"></span>
+                <span class="star s4"></span>
+                <span class="star s5"></span>
+                <span class="star s6"></span>
+                <span class="star s7"></span>
+                <span class="star s8"></span>
+                <span class="star s9"></span>
+                <span class="star s10"></span>
+                <span class="star s11"></span>
+                <span class="star s12"></span>
+            </div>
 
-        <div class="strings">
+            <div class="moon">
+                <span class="crater c1"></span>
+                <span class="crater c2"></span>
+                <span class="crater c3"></span>
+            </div>
 
-            <button class="string-button" data-note="E2">
-                <span>6</span>
-                <strong>E</strong>
-                <small>82.41 Hz</small>
-            </button>
-
-            <button class="string-button" data-note="A2">
-                <span>5</span>
-                <strong>A</strong>
-                <small>110.00 Hz</small>
-            </button>
-
-            <button class="string-button" data-note="D3">
-                <span>4</span>
-                <strong>D</strong>
-                <small>146.83 Hz</small>
-            </button>
-
-            <button class="string-button" data-note="G3">
-                <span>3</span>
-                <strong>G</strong>
-                <small>196.00 Hz</small>
-            </button>
-
-            <button class="string-button" data-note="B3">
-                <span>2</span>
-                <strong>B</strong>
-                <small>246.94 Hz</small>
-            </button>
-
-            <button class="string-button" data-note="E4">
-                <span>1</span>
-                <strong>E</strong>
-                <small>329.63 Hz</small>
-            </button>
+            <div class="cloud cloud1"></div>
+            <div class="cloud cloud2"></div>
 
         </div>
 
 
-        <div class="selected-string">
+        <!-- Дальний город -->
+        <div class="city far-city">
 
-            Струна:
-
-            <strong id="selected-note">
-                —
-            </strong>
-
-        </div>
-
-
-        <button id="mic-button">
-            🎤 Включить микрофон
-        </button>
-
-
-        <div class="note" id="note">
-            —
-        </div>
-
-
-        <div class="frequency" id="frequency">
-            0.0 Hz
-        </div>
-
-
-        <div class="labels">
-
-            <span>
-                🔵 НАТЯНИ
-            </span>
-
-            <span>
-                ОСЛАБЬ 🔴
-            </span>
+            <div class="building b1"></div>
+            <div class="building b2"></div>
+            <div class="building b3"></div>
+            <div class="building b4"></div>
+            <div class="building b5"></div>
+            <div class="building b6"></div>
+            <div class="building b7"></div>
+            <div class="building b8"></div>
+            <div class="building b9"></div>
+            <div class="building b10"></div>
 
         </div>
 
 
-        <div class="scale">
+        <!-- Передний город -->
+        <div class="city front-city">
 
-            <div class="center-line"></div>
+            <div class="building fb1"></div>
+            <div class="building fb2"></div>
+            <div class="building fb3"></div>
+            <div class="building fb4"></div>
+            <div class="building fb5"></div>
+            <div class="building fb6"></div>
+            <div class="building fb7"></div>
+            <div class="building fb8"></div>
+
+        </div>
+
+
+        <!-- Девушка -->
+        <div class="character">
+
+            <img
+                src="girl.png"
+                alt="Alt girl with electric guitar"
+                class="girl"
+            >
+
+        </div>
+
+
+        <!-- Интерфейс тюнера -->
+        <section class="tuner">
+
+            <h1>🎸 GUITAR TUNER</h1>
+
+            <p class="subtitle">
+                STANDARD TUNING
+            </p>
+
+
+            <!-- Выбор струны -->
+            <div class="strings">
+
+                <button
+                    class="string-button"
+                    data-note="E2"
+                >
+                    E
+                    <small>82.4 Hz</small>
+                </button>
+
+                <button
+                    class="string-button"
+                    data-note="A2"
+                >
+                    A
+                    <small>110 Hz</small>
+                </button>
+
+                <button
+                    class="string-button"
+                    data-note="D3"
+                >
+                    D
+                    <small>146.8 Hz</small>
+                </button>
+
+                <button
+                    class="string-button"
+                    data-note="G3"
+                >
+                    G
+                    <small>196 Hz</small>
+                </button>
+
+                <button
+                    class="string-button"
+                    data-note="B3"
+                >
+                    B
+                    <small>246.9 Hz</small>
+                </button>
+
+                <button
+                    class="string-button"
+                    data-note="E4"
+                >
+                    E
+                    <small>329.6 Hz</small>
+                </button>
+
+            </div>
+
+
+            <!-- Главный дисплей -->
+            <div class="display">
+
+                <div
+                    id="selected-note"
+                    class="selected-note"
+                >
+                    —
+                </div>
+
+                <div
+                    id="note"
+                    class="note"
+                >
+                    —
+                </div>
+
+                <div
+                    id="frequency"
+                    class="frequency"
+                >
+                    — Hz
+                </div>
+
+
+                <div class="meter">
+
+                    <div class="meter-center"></div>
+
+                    <div
+                        id="marker"
+                        class="marker"
+                    ></div>
+
+                </div>
+
+
+                <div
+                    id="tuning-status"
+                    class="tuning-status"
+                >
+                    Выбери струну
+                </div>
+
+            </div>
+
+
+            <!-- Микрофон -->
+            <button
+                id="mic-button"
+                class="mic-button"
+            >
+                🎤 НАСТРОИТЬ
+            </button>
+
 
             <div
-                class="marker"
-                id="marker"
-            ></div>
+                id="status"
+                class="status"
+            >
+                Микрофон выключен
+            </div>
 
-        </div>
+        </section>
 
-
-        <div
-            class="tuning-status"
-            id="tuning-status"
-        >
-            Сначала выбери струну
-        </div>
-
-
-        <p id="status">
-            Микрофон выключен
-        </p>
-
-    </div>
+    </main>
 
 
     <script src="script.js"></script>
-
-    <script>
-    if ("serviceWorker" in navigator) {
-        navigator.serviceWorker.register(
-            "service-worker.js"
-        );
-    }
-</script>
 
 </body>
 
